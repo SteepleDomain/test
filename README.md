@@ -30,6 +30,8 @@ On a custom domain or localhost, set `repositoryUrl` to `https://github.com/owne
 
 Cross-origin sources must allow browser requests, for example with `Access-Control-Allow-Origin: *`. A raw file on `raw.githubusercontent.com` can be used. Do not put secrets in these files: all content and configuration are public. Commands have a 32 KB limit and requests time out after 12 seconds.
 
+The interface has no View source link, including loading and error states. The configured source URLs remain public in `config.js` and browser network requests; this UI change does not hide them.
+
 ## Publish on GitHub Pages
 
 1. Upload `index.html`, `style.css`, `app.js`, `config.js`, `favicon.svg`, `.nojekyll`, and `THIRD_PARTY_NOTICES.txt` to the repository root. `icons.svg` is included as an optional source reference; the page does not load it.

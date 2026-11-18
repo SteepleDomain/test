@@ -56,7 +56,7 @@
     command = value;
     text('command-text', value);
     text('command-status', 'Ready to copy');
-    text('command-feedback', 'Loaded from the publisher’s source.');
+    text('command-feedback', 'Command ready to copy.');
     updateCopy();
   }
   async function load(method, force = false) {
@@ -85,8 +85,6 @@
     text('method-title', method === 'standard' ? 'The standard setup command' : 'The execution policy alternative');
     text('method-description', method === 'standard' ? 'Use this method for your usual PowerShell setup.' : 'Use only if the default command reports an error. Review the source first.');
     $('retry').hidden = true;
-    $('source-link').hidden = true;
-    $('source-link').removeAttribute('href');
     const raw = config.commands?.[method];
     const url = httpsUrl(raw);
     text('command-text', '# Your command will appear here.');
@@ -100,8 +98,6 @@
       text('command-feedback', 'The command source must be a valid HTTPS URL.');
       return;
     }
-    $('source-link').href = url;
-    $('source-link').hidden = false;
     if (!force && cache.has(url)) { ready(cache.get(url)); return; }
     text('command-status', 'Loading…');
     text('command-text', '# Loading command from source…');
